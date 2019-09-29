@@ -34,6 +34,12 @@
 			fclose($archivo);
 			exit();
 		}
+		else 
+	    {
+			header("Location: ../login.php?error=contraseñaincorrecta");
+			fclose($archivo);
+			exit();
+		}
 
 		fclose($archivo);
 	}	

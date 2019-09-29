@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" href="">
 
     <title>Sticky Footer Navbar Template for Bootstrap</title>
 
@@ -29,7 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -41,7 +41,7 @@
             <li class="nav-item">
               <a class="nav-link" href="ingresoVehiculo.php">Ingresar Vehiculo</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
             </li>
           </ul>
@@ -55,12 +55,24 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
+      <form action="acciones/hacerFacturar.php" class="form-signin">
+      <div class="text-center mb-4">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Facturar vehículo</h1>
+      </div>
+        <?php 
+        if (isset($_GET['exito']))
+        {        
+            echo '<p>Vehiculo facturado!</p>'; 
+        }
+        ?>
          
-      <h1 class="mt-5">Estacionamiento Rosso</h1>
-      <p class="lead">Bienvenido a Estacionamientos Rosso</p>
-
-    </main>
+        <input type="text" name="inputPatente" class="form-control" placeholder="patente" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Facturar</button>
       
+    </form> 
+    </main>
+
     <footer class="footer">
       
     </footer>

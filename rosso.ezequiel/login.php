@@ -42,7 +42,7 @@
               <a class="nav-link" href="ingresoVehiculo.php">Ingresar Vehiculo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="listarUsuarios.php">Usuarios</a>
+              <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -70,15 +70,19 @@
             {
               echo '<p>La contraseña es incorrecta!</p>';
             }
-            else if ($_GET['error'] == "usuarionoexiste") 
+            else if ($_GET['error'] == "usuarioincorrecto") 
             {
               echo '<p>El usuario no existe!</p>';
             }
+            else if ($_GET['error'] == "contraseñaincorrecta") 
+            {
+              echo '<p>Contraña incorrecta!</p>';
+            }
           }
-          else if ($_GET['exito'])
+          else if (isset($_GET['exito']))
           {
             echo '<p>Bienvenido!</p>';
-          }
+          } else '<p>Llena los campos.</p>';
         ?>
       </div>
         <input type="text" name="inputUsuario" class="form-control" placeholder="Usuario"autofocus>

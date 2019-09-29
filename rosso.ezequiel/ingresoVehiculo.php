@@ -42,7 +42,7 @@
               <a class="nav-link" href="ingresoVehiculo.php">Ingresar Vehiculo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="listarUsuarios.php">Usuarios</a>
+              <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
