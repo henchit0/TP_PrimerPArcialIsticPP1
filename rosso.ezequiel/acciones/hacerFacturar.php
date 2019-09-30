@@ -1,13 +1,13 @@
 <?php
 
-	$precioFraccion = 100;
+	$precioFraccion = 100;	
+	$contadorFraccion = 0;
+	$borrar = false;
 	
-	$horaSalida = time(); 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
-	$horaSalida= date ('H:i', $horaSalida);
+	$horaSalida = mktime(); 
 
 	$checkPatente = $_GET['inputPatente'];
-
 
 	if (empty($checkPatente)) 
 	{
@@ -16,28 +16,46 @@
 	}
 	else
 	{
-		$archivo = fopen("estacionados.txt", "r") or die("Imposible arbrir el archivo");
-	
+		$archivo = fopen("estacionados.txt", "r") or die("Imposible arbrir el archivo");	
+
 		while(!feof($archivo)) 
 		{
 			$objeto = json_decode(fgets($archivo));
 
-			if ($objeto->patente == $checkPatente) 
+			$objetoPatente = $objeto->patente;
+			$horaEntrada = $objeto->horaIngreso;
+
+			if ($objetoPatente == $checkPatente) 
+			{	
+				$borrar = true;
+				$diffSegundos = $horaSalida - $horaEntrada;
+				$diffAlternativo = $diffSegundos;
+
+				while ($diffAlternativo >= 3600) 
+				{			
+					if ($diffAlternativo >= 3600) 
+					{
+						$contadorFraccion++;
+						$diffAlternativo = $diffAlternativo - 3600;
+					}
+					else if ($diffAlternativo >= 1800)
+					{
+						$contadorFraccion++;
+					}					
+				}
+				$resultado = $contadorFraccion * $precioFraccion;
+				header("Location: ../facturarVehiculo.php?cobrar=".$resultado."&ingreso=".$horaEntrada."&salida=".$horaSalida);
+				fclose($archivo);
+				exit();
+			}
+			else
 			{
-      			$horaEntrada = $objeto->hora;
-
-      			$dateTime1 = date_create($horaEntrada);
-      			$dateTime2 = date_create($horaSalida);
-      			$interval = date_diff($dateTime1, $dateTime2);
-
-      			echo "<p> El vehiculo estuvo estacionado <br>".$interval->format('%h hs:%i min <br></p>'); 
-      			$porHora = $interval->format('%hhs') * $precioFraccion;
-      			echo "El precio por hora es de: $".$precioFraccion."<br>";
-      			echo "<p>Total a pagar: $".$porHora."</p>";
-
-      			}
-		}
-	}
-
-	
+				header("Location: ../facturarVehiculo.php?error=patentenoexiste");
+			}
+      	}
+      	//if ($borrar) {
+      	//	$lear = fopen("estacionados.txt", "r");
+      	//	$escribir = fopen("estacionados.tmp", "w");
+      	//}
+	}	
 ?>

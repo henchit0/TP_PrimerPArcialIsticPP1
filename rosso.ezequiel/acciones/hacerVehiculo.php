@@ -1,10 +1,8 @@
 <?php
 	$miSegundoObjeto = new stdClass();
 
-	$horaIngreso = time(); 
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
-	$horaIngreso= date ('H:i', $horaIngreso);
-
+	$horaIngreso = mktime(); 	
 
 	$miSegundoObjeto->patente = $_GET['inputPatente'];
 	$miSegundoObjeto->horaIngreso = $horaIngreso;

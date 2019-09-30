@@ -65,6 +65,20 @@
         {        
             echo '<p>Vehiculo facturado!</p>'; 
         }
+        else if (isset($_GET['cobrar'])) 
+        { 
+          $aPagar = $_GET['cobrar'];
+          $ingreso = $_GET['ingreso'];
+          $salida = $_GET['salida'];
+
+          echo "<p>Fecha de ingreso: ".date("Y-m-d h:i:sa",$ingreso)."</p><br>";
+          echo "<p>Fecha de salida: ".date("Y-m-d h:i:sa",$salida)."</p><br>";
+          echo "<p>Se facturo: $".$aPagar."</p><br>";
+        }
+        else if (isset($_GET['error'])) 
+        {
+          echo '<p>No existe un vehiculo con esa patente!</p>';  
+        }
         ?>
          
         <input type="text" name="inputPatente" class="form-control" placeholder="patente" required>
