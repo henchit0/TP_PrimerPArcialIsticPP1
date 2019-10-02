@@ -15,7 +15,14 @@
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/floating-labels.css" rel="stylesheet">
+    <style>
+      p
+      {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 1px;
+      }
 
+    </style>
   </head>
 
   <body>
@@ -55,25 +62,27 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-      <form action="acciones/hacerFacturar.php" class="form-signin">
+      <form action="acciones/probandoFactura.php" class="form-signin">
       <div class="text-center mb-4">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Facturar vehículo</h1>
       </div>
         <?php 
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
         if (isset($_GET['exito']))
         {        
             echo '<p>Vehiculo facturado!</p>'; 
         }
         else if (isset($_GET['cobrar'])) 
         { 
+
           $aPagar = $_GET['cobrar'];
           $ingreso = $_GET['ingreso'];
           $salida = $_GET['salida'];
 
-          echo "<p>Fecha de ingreso: ".date("Y-m-d h:i:sa",$ingreso)."</p><br>";
-          echo "<p>Fecha de salida: ".date("Y-m-d h:i:sa",$salida)."</p><br>";
-          echo "<p>Se facturo: $".$aPagar."</p><br>";
+          echo "<p>Fecha de ingreso: ".date("d-m-y H:i",$ingreso)."</p><br>";
+          echo "<p>Fecha de salida: ".date("d-m-y H:i",$salida)."</p><br>";
+          echo "<p>Total a pagar: $".$aPagar."</p><br>";
         }
         else if (isset($_GET['error'])) 
         {

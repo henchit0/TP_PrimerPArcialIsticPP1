@@ -18,8 +18,8 @@
 	{
 		$archivo = fopen("estacionados.txt", "r") or die("Imposible arbrir el archivo");	
 
-		while(!feof($archivo)) 
-		{
+		for ($i=0; $i < length($archivo) ; $i++) 
+		{ 		
 			$objeto = json_decode(fgets($archivo));
 
 			$objetoPatente = $objeto->patente;
@@ -47,7 +47,8 @@
 				}
 				$resultado = $contadorFraccion * $precioFraccion;
 				header("Location: ../facturarVehiculo.php?cobrar=".$resultado."&ingreso=".$horaEntrada."&salida=".$horaSalida);
-					fclose($archivo);
+				unset($archivo[i]);
+				fclose($archivo);
 				exit();
 			}
 			else
@@ -55,15 +56,14 @@
 				header("Location: ../facturarVehiculo.php?error=patentenoexiste");
 			}
       	}
-      	if ($borrar) {
-      		$leer = fopen("estacionados.txt", "a");
-			while (!feof($leer)) 
-			{			
-      			$objeto = json_decode(fgets($lear));     					
-      			if ($checkPatente == $objeto->patente) 
-      			{
-    				unset($objeto);
-            	}
+      	//if ($borrar) {
+      	//	$lear = fopen("estacionados.txt", "r");
+      	//	foreach ($lear as $key => $value) 
+      	//	{      					
+      	//		if (in_array('Dispatched', $value, true)) 
+      	//		{
+    	//			unset($status[$key]);
+          //  	}
+            //$status = json_encode($status);
       	}
-	}	
 ?>
