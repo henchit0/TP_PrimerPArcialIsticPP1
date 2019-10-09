@@ -5,5 +5,5 @@
 	$archivo = fopen('usuarios.txt', 'a');
 	fwrite($archivo, json_encode($miObjeto)."\n");
 	fclose($archivo);
-	header("Location: ../registro.php?exito=exito")
+	header("Location: ../registro.php?exito=exito");
 ?> 

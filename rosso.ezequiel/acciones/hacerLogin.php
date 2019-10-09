@@ -28,7 +28,7 @@
 				}			
 			}
 		 	
-		}
+		}	
 		if ($booUsuario == 0) {
 			header("Location: ../login.php?error=usuarioincorrecto");
 			fclose($archivo);

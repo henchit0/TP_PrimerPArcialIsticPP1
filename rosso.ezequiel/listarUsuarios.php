@@ -41,7 +41,15 @@
               <a class="nav-link" href="ingresoVehiculo.php">Ingresar Vehiculo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="listarUsuarios.php">Usuarios</a>
+              <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="listarUsuarios.php">Listar Usuarios</a>
+            <li class="nav-item">
+              <a class="nav-link" href="listarVehiculos.php">Listar Vehiculos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -58,11 +66,14 @@
       	<h2>Listado de usuarios</h2>
       	<ol>
 			<?php
-			$archivo = fopen("usuarios.txt", "r") or die("Imposible abrir el archivo");
+      error_reporting(0);
+			$archivo = fopen("acciones/usuarios.txt", "r") or die("Imposible abrir el archivo");
 			while(!feof($archivo)) 
 			{
 		 		$objeto = json_decode(fgets($archivo));
-				echo "<li>Usuario: ".$objeto->usuario." <br>Contraseña: ".$objeto->password."</li>";
+        if (!$objeto == "") {
+          echo "<li>Usuario: ".$objeto->usuario."</li>";
+        }
 			}
 			fclose($archivo);
 			?>

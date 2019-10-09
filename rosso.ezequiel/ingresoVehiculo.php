@@ -29,7 +29,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+           <li class="nav-item">
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -43,6 +43,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="listarUsuarios.php">Listar Usuarios</a>
+            <li class="nav-item">
+              <a class="nav-link" href="listarVehiculos.php">Listar Vehiculos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">

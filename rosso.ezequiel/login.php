@@ -44,6 +44,14 @@
             <li class="nav-item">
               <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="listarUsuarios.php">Listar Usuarios</a>
+            <li class="nav-item">
+              <a class="nav-link" href="listarVehiculos.php">Listar Vehiculos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
+            </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -88,9 +96,7 @@
         <input type="text" name="inputUsuario" class="form-control" placeholder="Usuario"autofocus>
         <input type="password" name="inputPassword" class="form-control" placeholder="Password">
       <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Recuerdame
-        </label>
+        
       </div>
       <button class="btn btn-lg btn-primary btn-block" name="login-submit" type="submit">Ingresar</button>
       

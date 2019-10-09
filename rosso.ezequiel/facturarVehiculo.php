@@ -51,6 +51,14 @@
             <li class="nav-item active">
               <a class="nav-link" href="facturarVehiculo.php">Facturar Vehiculo</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="listarUsuarios.php">Listar Usuarios</a>
+            <li class="nav-item">
+              <a class="nav-link" href="listarVehiculos.php">Listar Vehiculos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
+            </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -62,7 +70,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-      <form action="acciones/probandoFactura.php" class="form-signin">
+      <form action="acciones/hacerFacturar.php" class="form-signin">
       <div class="text-center mb-4">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Facturar vehículo</h1>
@@ -79,9 +87,11 @@
           $aPagar = $_GET['cobrar'];
           $ingreso = $_GET['ingreso'];
           $salida = $_GET['salida'];
+          $estadia = $_GET['estadia'];
 
           echo "<p>Fecha de ingreso: ".date("d-m-y H:i",$ingreso)."</p><br>";
           echo "<p>Fecha de salida: ".date("d-m-y H:i",$salida)."</p><br>";
+          echo "<p>Cantidad de horas de estadia: ".$estadia."</p><br>";
           echo "<p>Total a pagar: $".$aPagar."</p><br>";
         }
         else if (isset($_GET['error'])) 

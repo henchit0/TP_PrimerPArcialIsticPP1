@@ -1,6 +1,7 @@
 {"usuario":"Ezequiel","password":"1234"}
-{"usuario":"Daiana","password":"2345"}
-{"usuario":"Raul","password":"2345"}
-{"usuario":"Manuel","password":"2345"}
-{"usuario":"Pepe","password":"123"}
-{"usuario":"Pepe","password":"234"}
+{"usuario":"Manuel","password":"5432"}
+{"usuario":"Daiana","password":"asdasd"}
+{"usuario":"Pablo","password":"fasdasd"}
+{"usuario":"Rodrigo","password":"rfafwe"}
+{"usuario":"Laura","password":"asdgef"}
+{"usuario":"Octavio","password":"Octavio"}

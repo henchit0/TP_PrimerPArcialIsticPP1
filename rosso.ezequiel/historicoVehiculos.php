@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Sticky Footer Navbar Template for Bootstrap</title>
+    <title>Estacionamiento</title>
 
-    <!-- Bootstrap core CSS -->
+     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="css/floating-labels.css" rel="stylesheet">
-
   </head>
 
   <body>
@@ -32,7 +31,7 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="registro.php">Registrate</a>
             </li>
             <li class="nav-item">
@@ -46,11 +45,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="listarUsuarios.php">Listar Usuarios</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="listarVehiculos.php">Listar Vehiculos</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="listarVehiculos.php">Historial Vehiculos</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -63,24 +63,33 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-      <form action="acciones/hacerRegistro.php" class="form-signin">
-      <div class="text-center mb-4">
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+    	<div>
+      	<h2>Listado Historico de vehiculos</h2>
+      <table>
+          <tr>
+            <th>&nbspPatente&nbsp</th>
+            <th>&nbspFecha Ingreso&nbsp</th>
+            <th>&nbspFecha Salida&nbsp</th>
+            <th>&nbspTotal Cobrado&nbsp</th>
+          </tr>
+			<?php
+      error_reporting(0);
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-        <?php 
-          if (isset($_GET['exito'])) {
-            echo '<p>Registro ingresado correctamente!</p>';
-          }
-        ?>
-
-      </div>     
-        <input type="text" name="inputUsuario" class="form-control" placeholder="Usuario" required autofocus>
-        <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+			$archivo = fopen("acciones/historicoFacturados.txt", "r") or die("Imposible abrir el archivo");
+			while(!feof($archivo)) 
+			{
+		 		$objeto = json_decode(fgets($archivo));
+        if (!$objeto == "") {
+          echo "<tr>";
+          echo "<td>".$objeto->patente."</td>   <td>".date("d-m-y H:i",$objeto->horaIngreso)."</td>   <td>".date("d-m-y H:i",$objeto->horaSalida)."</td>   <td>&nbsp&nbsp".$objeto->totalCobrado."</td></tr>";
+        }
+			}
+			fclose($archivo);
+			?>
       
-    </form> 
-    </main>
+		</div>
+ 	</main>
 
     <footer class="footer">
       
