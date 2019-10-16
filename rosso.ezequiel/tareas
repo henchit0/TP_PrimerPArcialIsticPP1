@@ -1,1 +1,22 @@
 tareas
+
+facturar.php
+
+
+
+
+
+hacerFacturar
+
+si auto no existe, mensaje
+si auto existe, cobrar tarifa
+
+
+Una fábrica de muebles fabrica 3 modelos de estanterias A, B y C, cada uno en dos tamaños grande y pequeño. Produce diariamente 1000 estanterias grande y 8000 estanterias pequeñas del tipo A, 8000 grandes y 6000 pequeñas del tipo B y 4000 grandes y 6000 pequeñas del tipo C. Cada estanteria grande lleva 16 tornillos y 6 soportes, y la pequeña lleva 12 tornillos y 4 soportes. 
+
+a) Representar esta infirmación en dos cuadros y luego tratar de volcar la informacion en una matriz e indicar a que tipos de datos corrresponde.
+
+b) determinar la dimension de cada uno. Para la primer matriz calcular su estructura unidimensional y la segunda bidimensional.
+
+c) calcular el rango solamente de la fila de la primer matriz y el rango de la segunda matriz invertida.
+

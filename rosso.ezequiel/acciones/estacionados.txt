@@ -4,3 +4,4 @@
 {"patente":"asd123","horaIngreso":1570578674}
 {"patente":"hfgh123","horaIngreso":1570582347}
 {"patente":"patenteprueba","horaIngreso":1570582364}
+{"patente":"eee111","horaIngreso":1570626517}

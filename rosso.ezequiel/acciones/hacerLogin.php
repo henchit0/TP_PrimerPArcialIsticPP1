@@ -1,5 +1,6 @@
 <?php
-	
+	session_start();
+
 	$checkUsuario = $_GET['inputUsuario'];
 	$checkPassword = $_GET['inputPassword'];
 	$booUsuario = 0;
@@ -22,7 +23,8 @@
 				$booUsuario = 1;
 				if ($objeto->password == $checkPassword)
 				{
-					header("Location: ../login.php?exito=signup");
+					$_SESSION['idDeUsuario'] = $checkUsuario;
+					header("Location: ../login.php");
 					fclose($archivo);
 					exit();
 				}			

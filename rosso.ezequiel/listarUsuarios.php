@@ -1,3 +1,6 @@
+<?php 
+session_start();
+ ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -51,6 +54,16 @@
             <li class="nav-item">
               <a class="nav-link" href="historicoVehiculos.php">Historial Vehiculos</a>
             </li>
+            <?php 
+            if (isset($_SESSION['idDeUsuario'])) 
+            {
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="acciones/hacerLogout.php">Logout</a>
+            </li>
+            <?php              
+            }
+            ?>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -62,6 +75,10 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
+      <?php 
+      if (isset($_SESSION['idDeUsuario'])) 
+      {
+        ?>      
     	<div>
       	<h2>Listado de usuarios</h2>
       	<ol>
@@ -79,6 +96,9 @@
 			?>
 		</ol>
 		</div>
+    <?php 
+     }
+     ?>
  	</main>
 
     <footer class="footer">

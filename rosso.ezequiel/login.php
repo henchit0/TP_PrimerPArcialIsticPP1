@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -56,6 +60,12 @@
           <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <?php  
+              if (isset($_SESSION['idDeUsuario'])) 
+              {
+                echo "<label style='color: white;'>".$_SESSION['idDeUsuario']."</label>";
+              }
+             ?>
           </form>
         </div>
       </nav>
@@ -68,7 +78,7 @@
       <div class="text-center mb-4">
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-        <?php
+        <?php  
           if (isset($_GET['error'])) 
           {
             if ($_GET['error'] == "camposvacios") {
@@ -87,10 +97,11 @@
               echo '<p>Contraña incorrecta!</p>';
             }
           }
-          else if (isset($_GET['exito']))
+          else if (isset($_SESSION['idDeUsuario']))
           {
             echo '<p>Bienvenido!</p>';
           } else '<p>Llena los campos.</p>';
+        
         ?>
       </div>
         <input type="text" name="inputUsuario" class="form-control" placeholder="Usuario"autofocus>
