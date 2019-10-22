@@ -94,7 +94,7 @@
             }
             else if ($_GET['error'] == "contraseñaincorrecta") 
             {
-              echo '<p>Contraña incorrecta!</p>';
+              echo '<p>Contraseña incorrecta!</p>';
             }
           }
           else if (isset($_SESSION['idDeUsuario']))
