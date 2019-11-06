@@ -1,8 +1,0 @@
-{"usuario":"Ezequiel","password":"1234"}
-{"usuario":"Manuel","password":"5432"}
-{"usuario":"Daiana","password":"asdasd"}
-{"usuario":"Pablo","password":"fasdasd"}
-{"usuario":"Rodrigo","password":"rfafwe"}
-{"usuario":"Laura","password":"asdgef"}
-{"usuario":"Octavio","password":"Octavio"}
-{"usuario":"Del Potro","password":"tenista"}
