@@ -1,1 +1,0 @@
-{"patente":"asd123","horaIngreso":1570542731,"horaSalida":1570662677,"totalCobrado":3300}
