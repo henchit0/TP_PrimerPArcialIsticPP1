@@ -5,7 +5,6 @@ $_SESSION['idDeUsuario'] = NULL;
 
 session_destroy();
 
-header("Location: ../listarUsuarios.php")
+header("Location: ../index.php");
 
 
-?>

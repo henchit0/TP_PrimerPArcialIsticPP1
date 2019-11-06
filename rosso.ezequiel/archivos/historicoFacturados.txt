@@ -1,0 +1,5 @@
+{"patente":"aaa111","horaIngreso":1571872352,"horaSalida":1571872563,"totalCobrado":0}
+{"patente":"aaa111","horaIngreso":1571872352,"horaSalida":1572386266,"totalCobrado":14200}
+{"patente":"aaa111","horaIngreso":1571872352,"horaSalida":1572386298,"totalCobrado":14200}
+{"patente":"aaa111","horaIngreso":1571872352,"horaSalida":1572386694,"totalCobrado":14200}
+{"patente":"aaa111","horaIngreso":1571872352,"horaSalida":1572387064,"totalCobrado":14200}

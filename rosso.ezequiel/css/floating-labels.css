@@ -8,6 +8,11 @@ body {
   height: 100%;
 }
 
+table,th,tr,td{
+  border: 1px solid black;
+  text-align: center;
+}
+
 body {
   display: -ms-flexbox;
   display: -webkit-box;

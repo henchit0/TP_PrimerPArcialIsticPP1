@@ -1,5 +1,5 @@
 <?php
-
+	include "AccesoDatos.php";
 	$precioFraccion = 100;	
 	$contadorFraccion = 0;
 	$borrar = false;
@@ -12,30 +12,27 @@
 
 	if (empty($checkPatente)) 
 	{
-		header("Location: ../facturarVehiculo.php?error=campovacio");
+		header("Location: ../paginas/facturarVehiculo.php?error=campovacio");
 		exit();
 	}
 	else
 	{
-		$archivo = fopen("estacionados.txt", "r") or die("Imposible arbrir el archivo");
-		$historico = fopen("historicoFacturados.txt", "w");	
-		$objetoHistorico = new stdClass();
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+        $consulta =$objetoAccesoDato->RetornarConsulta("select * from vehiculosestacionados");
+        $consulta->execute();     
+        $datos= $consulta->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($datos);
+        // die();
 
+        foreach ($datos as $vehiculo) 
+        {
 
-		while(!feof($archivo)) 
-		{
-			$objeto = json_decode(fgets($archivo));
-
-			$objetoPatente = $objeto->patente;
-			$horaEntrada = $objeto->horaIngreso;
-
-			if ($objetoPatente == $checkPatente) 
+			if ($vehiculo['patente'] == $checkPatente) 
 			{	
-
 				$borrar = true;
 
 				//$horaSalida = strtotime($horaSalida);
-				$diffSegundos = $horaSalida - $horaEntrada;
+				$diffSegundos = $horaSalida - $vehiculo['horaIngreso'];
 				$diffAlternativo = $diffSegundos;
 
 				while ($diffAlternativo >= 3600) 
@@ -53,59 +50,78 @@
 				}
 				$resultado = $contadorFraccion * $precioFraccion;
 
-				$objetoHistorico->patente = $objetoPatente;
-				$objetoHistorico->horaIngreso = $horaEntrada;
-				$objetoHistorico->horaSalida = $horaSalida;
-				$objetoHistorico->totalCobrado = $resultado;
-				fwrite($historico, json_encode($objetoHistorico)."\n");
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$select="DELETE FROM vehiculosestacionados WHERE patente = $checkPatente";
+				$borrar =$objetoAccesoDato->RetornarConsulta($select);
+				$borrar->execute();
 
+				
 
-				header("Location: ../facturarVehiculo.php?cobrar=".$resultado."&ingreso=".$horaEntrada."&salida=".$horaSalida."&estadia=".$contadorFraccion);
-					fclose($archivo);
-				exit();
-			}
-			else
-			{
-				header("Location: ../facturarVehiculo.php?error=patentenoexiste");
-			}
-      	}
+				header("Location: ../paginas/facturarVehiculo.php?cobrar=".$resultado."&ingreso=".$vehivulo['horaIngreso']."&salida=".$horaSalida."&estadia=".$contadorFraccion);
+				// $objetoHistorico->patente = $objetoPatente;
+				// $objetoHistorico->horaIngreso = $horaEntrada;
+				// $objetoHistorico->horaSalida = $horaSalida;
+				// $objetoHistorico->totalCobrado = $resultado;
 
-      	fclose($archivo);
-      	fclose($historico);
+        	}
 
-//      	if ($borrar) 
-//      	{
-//
-//      		$archOriginal = fopen('estacionados.txt', 'r');
-//			$archTemporal = fopen('estacionados.tmp', 'w');
-//
-//			$probandoPatente = "	1";
-//
-//			$reemplazarOriginal = false;
-//
-//			while (!feof($archOriginal)) 
-//			{
-//
-//			  	$registroJson = fgets($archOriginal);
-//
-//				if (stristr($registroJson->patente,$probandoPatente)) 
-//				{
-//
-//				    $registroJson = "";	
-//				    $reemplazarOriginal = true;
-//				}
-//				fputs($archTemporal, $registroJson);
-//			}
-//
-//			fclose($archOriginal); 
-//			close($archTemporal);
-//
-//			if ($reemplazarOriginal) 
-//			{
-				//var_dump($diffSegundos)
-			  	//		die();
-//			    rename('estacionados.tmp', 'estacionados.txt');
-//			} else unlink('estacionados.tmp');
 		}
-		
-?>	
+	}
+
+	
+
+		// while(!feof($archivo)) 
+		// {
+		// 	$objeto = json_decode(fgets($archivo));
+
+		// 	$objetoPatente = $objeto->patente;
+		// 	$horaEntrada = $objeto->horaIngreso;
+
+		// 		fwrite($historico, json_encode($objetoHistorico)."\n");
+
+
+		// 		header("Location: ../paginas/facturarVehiculo.php?cobrar=".$resultado."&ingreso=".$horaEntrada."&salida=".$horaSalida."&estadia=".$contadorFraccion);
+		// 		exit();
+		// 	}
+		// 	else
+		// 	{
+		// 		header("Location: ../paginas/facturarVehiculo.php?error=patentenoexiste");
+		// 	}
+  //     	}
+
+      	
+
+   //   	if ($borrar) 
+   //   	{
+
+   //   		$archOriginal = fopen('../archivos/estacionados.txt', 'a');
+			// $archTemporal = fopen('../archivos/estacionados.tmp', 'a');
+
+			// $probandoPatente = "fff444";
+
+			// $reemplazarOriginal = false;
+
+			// while (!feof($archOriginal)) 
+			// {
+
+			//   	$registroJson = fgets($archOriginal);
+
+			// 	if (stristr($registroJson->patente,$probandoPatente)) 
+			// 	{
+
+			// 	    $registroJson = "";	
+			// 	    $reemplazarOriginal = true;
+			// 	}
+			// 	fputs($archTemporal, $registroJson);
+			// }
+
+			// fclose($archOriginal); 
+			// close($archTemporal);
+
+			// if ($reemplazarOriginal) 
+			// {
+			// 	// var_dump($diffSegundos)
+			//  //  			die();
+			//     rename('../archivos/estacionados.tmp', 'estacionados.txt');
+			// } else unlink('estacionados.tmp');
+		?>
